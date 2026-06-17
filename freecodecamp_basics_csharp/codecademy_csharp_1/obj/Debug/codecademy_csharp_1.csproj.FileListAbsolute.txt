@@ -1,8 +1,0 @@
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\bin\Debug\codecademy_csharp_1.exe.config
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\bin\Debug\codecademy_csharp_1.exe
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\bin\Debug\codecademy_csharp_1.pdb
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\obj\Debug\codecademy_csharp_1.csproj.AssemblyReference.cache
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\obj\Debug\codecademy_csharp_1.csproj.CoreCompileInputs.cache
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\obj\Debug\codecademy_csharp_1.exe
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\obj\Debug\codecademy_csharp_1.pdb
-D:\repos\VS2022_repos\study\codecademy_csharp_1\codecademy_csharp_1\obj\Debug\codecademy_csharp_1.exe.config
