@@ -1,0 +1,14 @@
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.AssemblyInfoInputs.cache
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.AssemblyInfo.cs
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.csproj.CoreCompileInputs.cache
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\bin\Debug\net8.0\BinaryFileHandling.exe
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\bin\Debug\net8.0\BinaryFileHandling.deps.json
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\bin\Debug\net8.0\BinaryFileHandling.runtimeconfig.json
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\bin\Debug\net8.0\BinaryFileHandling.dll
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\bin\Debug\net8.0\BinaryFileHandling.pdb
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.dll
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\refint\BinaryFileHandling.dll
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.pdb
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\BinaryFileHandling.genruntimeconfig.cache
+D:\repos\VS2022_repos\study\freecodecamp_adv_csharp\freecodecamp_adv_csharp_part_22\BinaryFileHandling\BinaryFileHandling\obj\Debug\net8.0\ref\BinaryFileHandling.dll

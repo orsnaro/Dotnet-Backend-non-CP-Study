@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "byIudcBpYo4=",
+  "success": true,
+  "projectFilePath": "D:\\repos\\VS2022_repos\\study\\freecodecamp_adv_csharp\\freecodecamp_adv_csharp_part_17\\testing\\freecodecamp_adv_csharp_part_17.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\OmarPc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\OmarPc\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\OmarPc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\OmarPc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.27\\microsoft.netcore.app.host.win-x64.8.0.27.nupkg.sha512"
+  ],
+  "logs": []
+}

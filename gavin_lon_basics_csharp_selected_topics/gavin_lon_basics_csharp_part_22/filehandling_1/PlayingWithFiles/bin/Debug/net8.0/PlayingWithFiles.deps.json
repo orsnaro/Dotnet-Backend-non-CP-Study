@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "PlayingWithFiles/1.0.0": {
+        "dependencies": {
+          "filehandling_1": "1.0.0"
+        },
+        "runtime": {
+          "PlayingWithFiles.dll": {}
+        }
+      },
+      "filehandling_1/1.0.0": {
+        "runtime": {
+          "filehandling_1.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PlayingWithFiles/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "filehandling_1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
