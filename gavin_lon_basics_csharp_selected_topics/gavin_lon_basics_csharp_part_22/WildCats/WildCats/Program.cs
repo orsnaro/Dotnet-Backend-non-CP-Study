@@ -126,7 +126,7 @@ namespace WildCats
 
         }
         private static DirectoryInfo InitialiseSourceDirectory(string rootPath) {
-            string wildCatsDirectoryPath = Path.Combine(rootPath, "WildCats");
+            string wildCatsDirectoryPath = Path.Combine(rootPath, "WildCatsData");
             string infoFilePath = Path.Combine(wildCatsDirectoryPath, "Information.txt");
 
             if (!Directory.Exists(wildCatsDirectoryPath)) {
