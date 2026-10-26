@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.Data;
+using MoviesAPI.Endpoints;
 
 //factory pattern
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +38,9 @@ await using (var scope = app.Services.CreateAsyncScope()){ //you can use CreateS
 }
 
 
+
 app.MapGet("/", () => "Hello World!");
+app.MapMoviesEndpoints();
+
 
 app.Run();
