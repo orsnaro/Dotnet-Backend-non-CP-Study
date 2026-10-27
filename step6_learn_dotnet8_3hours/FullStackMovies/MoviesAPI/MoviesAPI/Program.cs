@@ -13,34 +13,13 @@ var connString = builder.Configuration.GetConnectionString("MoviesDbCS");
 builder.Services.AddDbContext<MovieContext>(options => options.UseSqlServer(connString));
 
 //this line is an example of builder pattern != factory pattern
-var app = builder.Build();
+var app = builder.Build(); //build after configuer dont configure after build✅
 
-//Resolution of DB context service
-//create temp DI scope to use/Resolve the ALREADY registered db context service MovieContext (manual DI and resolution)
-await using (var scope = app.Services.CreateAsyncScope()){ //you can use CreateScope() also
-
-    //prepare a provider that will get us the service we registered before!
-    var services = scope.ServiceProvider;
-
-    try{
-        //resloution: resolve the serivce (inject dependenct into HERE )
-        var dbContext = services.GetRequiredService<MovieContext>();
-
-        //use the service after you resolved/got it
-
-        //this will work fine with either CreateAsyncScope() or CreateScope()
-        await dbContext.Database.MigrateAsync();
-
-    } catch (Exception ex) {
-        Console.Error.WriteLine(ex.ToString());
-        throw;
-    }
-}
-
-
+app.DbMigrate(); //user extension methos
 
 app.MapGet("/", () => "Hello World!");
-app.MapMoviesEndpoints();
+
+app.MapMoviesEndpoints(); //user extension method
 
 
 app.Run();
