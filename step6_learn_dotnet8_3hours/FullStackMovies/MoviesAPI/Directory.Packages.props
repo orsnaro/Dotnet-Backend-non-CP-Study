@@ -10,5 +10,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.33" />
+    <PackageVersion Include="MinimalApis.Extensions" Version="0.11.0" />
   </ItemGroup>
 </Project>

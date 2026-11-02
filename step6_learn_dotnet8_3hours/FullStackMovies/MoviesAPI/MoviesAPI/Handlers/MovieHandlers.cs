@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.Data;
 using MoviesAPI.Entities;
+using MoviesAPI.DTOs.Movies;
 
 namespace MoviesAPI.Handlers;
 
@@ -34,5 +35,23 @@ public static class MovieHandlers
         IResult result = Results.Ok(movie);
 
         return result;
+    }
+
+    //POST /movies
+    public static async Task<IResult> PostMovies(Movie newMovie, MovieContext dbContext){
+
+        var tmpGenre = await dbContext.Genres.FindAsync(newMovie.GenreId); //better than first or firstordefault when were searching using primary key
+        if (tmpGenre is null) return Results.BadRequest("Invalid GenreId");
+        newMovie.Genre = tmpGenre;
+
+        await dbContext.Movies.AddAsync(newMovie);
+        await dbContext.SaveChangesAsync();
+
+        var responseDto = new MovieResponseDto(newMovie.Id, newMovie.Name, newMovie.GenreId);
+        var idDto = new MovieIdDto(newMovie.Id);
+
+        return Results.CreatedAtRoute("GetMovieById", idDto, responseDto);
+        //incoming post request didnt provide Id and we didnt return Id from DB how newMovie.Id knows the next right Id?
+        //ans: ef core auto updates it after SaveChangesAsync() gets the id from db and puts it in newMovie.Id
     }
 }

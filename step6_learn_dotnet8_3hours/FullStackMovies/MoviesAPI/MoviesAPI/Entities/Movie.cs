@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 namespace MoviesAPI.Entities{
     public class Movie{
         //primary key (implicitly) unique - not null - required
-        public required int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(120)]
