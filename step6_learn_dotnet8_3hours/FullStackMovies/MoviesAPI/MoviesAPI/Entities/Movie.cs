@@ -10,23 +10,18 @@ namespace MoviesAPI.Entities{
         [StringLength(120)]
         public required string Name { get; set; }
 
-
         public string? Director {get; set;}
-
 
         [Required]
         // [Range(1, 1000)] //this is more of a buisness rule, not a validation rule (not right layer)
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
-        public DateOnly ReleaseDate { get; set; }
-
-
+        public DateOnly? ReleaseDate { get; set; }
 
 
-
+//#######################################
         //foreign key
-        public int GenreId { get; set; }
-
+        public int? GenreId { get; set; }
 
         //navigation property
         [ValidateNever]
