@@ -1,9 +1,17 @@
+using MoviesBlazor.Clients;
 using MoviesBlazor.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+
+//get the api base url variable i.e.(address) from env variable or appsettings.json file
+string movieAPIURL = builder.Configuration["MoviesAPIURL"] ?? throw new Exception("Movies API URL is not set");
+
+//DI the MoviesClient with right base addr  urin to app services
+builder.Services.AddHttpClient<MoviesClient>(client => client.BaseAddress = new Uri(movieAPIURL));
 
 var app = builder.Build();
 

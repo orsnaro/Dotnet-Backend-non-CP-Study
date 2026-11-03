@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.Data;
 using MoviesAPI.Entities;
-using MoviesAPI.DTOs.Movies;
+using Movies.Contracts.DTOs;
 
 namespace MoviesAPI.Handlers;
 
@@ -23,7 +23,7 @@ public static class MovieHandlers
         await dbContext.Movies.AddAsync(newMovie);
         await dbContext.SaveChangesAsync();
 
-        var responseDto = new MovieResponseDto(newMovie.Id, newMovie.Name, newMovie.GenreId);
+        var responseDto = new CreateMovieResponseDto(newMovie.Id, newMovie.Name, newMovie.GenreId);
         var idDto = new MovieIdDto(newMovie.Id);
 
         return Results.CreatedAtRoute("GetMovieById", idDto, responseDto);
@@ -41,13 +41,27 @@ public static class MovieHandlers
         //on obsidian notes we speak on what is IQueryable<> and .AsNoTracking() method and EF lazy Execution!
         IQueryable<Movie> moviesQuery = dbContext.Movies.AsNoTracking().Include(movie => movie.Genre);
 
-        //check for filters and apply them
-        if (genreId is not null){ moviesQuery =  moviesQuery.Where(movie => movie.GenreId == genreId);}
 
-        List<Movie> movies = [];
+        //check for filters and apply them
+        if (genreId is not null) { moviesQuery = moviesQuery.Where(movie => movie.GenreId == genreId); }
+
+
+        //just before you get them from db project them to MovieDtos (only expose from db entity what we need!)
+        //(projection produces new IQueryable<> type!)
+        IQueryable<MovieDto>  movieDtosQuery =  moviesQuery
+                                                    .Select(movie => new MovieDto(
+                                                        movie.Name,
+                                                        movie.Price,
+                                                        movie.Genre != null ? movie.Genre.Name : null,
+                                                        movie.Director,
+                                                        movie.ReleaseDate
+                                                    ));
+
+        List<MovieDto> movies = [];
         try
         {
-            movies = await moviesQuery.ToListAsync();
+            //here EF core will lazy actually exec SQL and convert to list
+            movies = await movieDtosQuery.ToListAsync();
         }
         catch(Exception ex)
         {

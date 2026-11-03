@@ -1,7 +1,25 @@
 ﻿@page "/"
+@inject MoviesClient Client
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="row">
+   <h1 class="text-center text-primary"> My Movies </h1>
 
-Welcome to your new app.
+   @if(movies is null){
+      <p "text-center"> Loading...</p>
+   } else {
+      @foreach(var movie in movies){
+         <h1> @movie.Name</h1>
+      }
+   }
+</div>
+
+
+@code{
+   private List<MovieDto>? movies;
+
+   protected override async Task OnInitializedAsync(){
+      movies =  await Client.GetMoviesAsync();
+   }
+}
