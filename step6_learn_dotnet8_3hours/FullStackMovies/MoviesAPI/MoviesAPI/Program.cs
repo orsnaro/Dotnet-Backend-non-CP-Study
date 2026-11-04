@@ -21,5 +21,6 @@ app.MapGet("/", () => "Hello World!");//test
 
 app.MapMoviesEndpoints(); //user extension method
 
+app.MapGenresEndpoints();
 
 app.Run();
