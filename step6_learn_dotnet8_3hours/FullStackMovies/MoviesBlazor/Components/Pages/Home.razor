@@ -20,8 +20,12 @@
                   <p class="card-text">@movie.Director</p>
                   <p class="card-text">@movie.ReleaseDate</p>
                   <a class="btn btn-info" role="button" href="@MovieUrl(movie.Id)">
-                  <i class="bi bi-pencil"></i>
+                     <i class="bi bi-pencil"></i>
                   </a>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@DeleteMovie.GetDeleteConfirmModalId(movie)">
+                     <i class="bi bi-trash"></i>
+                  </button>
+                  <DeleteMovie Movie="@movie" />
                </div>
             </div>
          }

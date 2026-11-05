@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Movies.Contracts.DTOs;
 
 namespace MoviesBlazor.Clients;
@@ -27,5 +28,11 @@ public class MoviesClient(HttpClient httpClient)
     public async Task UpdateMovieAsync(int id, UpdateMovieDto movie)
     {
         await httpClient.PutAsJsonAsync($"movies/{id}", movie);
+    }
+
+
+    public async Task DeleteMovieAsync(int id)
+    {
+        await httpClient.DeleteAsync($"movies/{id}");
     }
 }
