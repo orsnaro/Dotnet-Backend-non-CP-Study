@@ -1,0 +1,138 @@
+@page "/addeditMovies"
+@page "/addeditMovies/{id:int}"
+
+@rendermode InteractiveServer
+
+@inject NavigationManager NavigationManager
+@inject MoviesClient MoviesClient
+@inject GenresClient GenresClient
+
+
+<PageTitle>@title</PageTitle>
+
+<h3>@title</h3>
+@if(genres is null || movie is null){
+   <p>Loading ...</p>
+}else {
+   <div class="col-md-4">
+      <EditForm Model="@movie" FormName="addeditMovie" OnValidSubmit="HandleSubmitAsync">
+         <DataAnnotationsValidator/>
+         <ValidationSummary/>
+         <div class="form-floating mb-3">
+
+            <InputText class="form-control" id="name" @bind-Value="movie.Name"/>
+
+            <label for="name">Name:</label>
+
+            <ValidationMessage For="() => movie.Name" />
+
+         </div>
+
+         <div class="form-floating mb-3">
+            <InputSelect class="form-control" id="genre" @bind-Value="movie.GenreId">
+               <option value=""> Select a genre </option>
+               @foreach (var genre in genres){
+                  <option value="@genre.Id">@genre.Name</option>
+               }
+            </InputSelect>
+
+            <label for="genre">Genre:</label>
+
+            <ValidationMessage For="() => movie.GenreId" />
+         </div>
+
+         <div class="form-floating mb-3">
+            <InputNumber class="form-control" id="price" @bind-Value="movie.Price"/>
+
+            <label for="price">Price:</label>
+
+            <ValidationMessage For="() => movie.Price"/>
+         </div>
+
+         <div class="form-floating mb-3">
+            <InputDate class="form-control" id="releaseDate" @bind-Value="movie.ReleaseDate"/>
+
+            <label for="releaseDate">Release Date:</label>
+
+            <ValidationMessage For="() => movie.ReleaseDate"/>
+         </div>
+
+         <button type="submit" class="btn btn-primary">Save</button>
+
+         <a role="button" class="btn btn-outline-secondary" href="/">Cancel</a>
+
+      </EditForm>
+   </div>
+}
+
+@code {
+
+   [Parameter]
+   public int? Id {get; set;}
+
+   [SupplyParameterFromForm]
+   private MovieDto? movie {get; set;}
+
+   private List<GenreDto>? genres = default;
+
+   private string title;
+
+   protected override async Task OnInitializedAsync()
+   {
+      genres = await GenresClient.GetGenresAsync();
+   }
+
+   protected override async Task OnParametersSetAsync()
+   {
+      if(movie is not null){
+         return; //do nothing
+      }
+
+      if(Id is not null){ //edit i.e. requested: /addeditMovie/{id:int}
+         movie  = await MoviesClient.GetMovieByIdAsync(Id.Value);
+         title = $"Edit Movie: {movie.Name}";
+      } else { //add
+         movie = new MovieDto{
+            Name = "",
+            Price = 0M,
+            GenreName = "",
+            Director = "",
+            ReleaseDate = DateOnly.FromDateTime(DateTime.UtcNow)
+         };
+
+         title = $"New Movie";
+      }
+   }
+
+   private async Task HandleSubmitAsync(){
+      ArgumentNullException.ThrowIfNull(movie);
+
+      if(Id is null){ //add /addeditMovies
+
+         CreateMovieDto movieToAdd = new CreateMovieDto{
+            Name = movie.Name,
+            Director = movie.Director,
+            Price = movie.Price,
+            ReleaseDate = movie.ReleaseDate,
+            GenreId = movie.GenreId
+         };
+
+         await MoviesClient.AddMovieAsync(movieToAdd);
+
+      } else {//edit /addeditMovies/{Id:int}
+
+          UpdateMovieDto movieToUpdate = new UpdateMovieDto{
+            Name = movie.Name,
+            Director = movie.Director,
+            Price = movie.Price,
+            ReleaseDate = movie.ReleaseDate,
+            GenreId = movie.GenreId
+         };
+
+         await MoviesClient.UpdateMovieAsync(Id.Value, movieToUpdate);
+      }
+
+      NavigationManager.NavigateTo("/");
+   }
+
+}

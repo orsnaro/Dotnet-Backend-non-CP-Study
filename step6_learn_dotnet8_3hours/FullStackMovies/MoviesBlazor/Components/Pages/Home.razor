@@ -9,9 +9,23 @@
    @if(movies is null){
       <p "text-center"> Loading...</p>
    } else {
-      @foreach(var movie in movies){
-         <h1> @movie.Name</h1>
-      }
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+         @foreach(var movie in movies){
+            <div   class="card border-info text-center">
+               <div class="card-header">
+                  <h5 class="card-title">@movie.Name</h5>
+               </div>
+               <div class="card-body">
+                  <p class="card-text">@movie.Price</p>
+                  <p class="card-text">@movie.Director</p>
+                  <p class="card-text">@movie.ReleaseDate</p>
+                  <a class="btn btn-info" role="button" href="@MovieUrl(movie.Id)">
+                  <i class="bi bi-pencil"></i>
+                  </a>
+               </div>
+            </div>
+         }
+      </div>
    }
 </div>
 
@@ -21,5 +35,9 @@
 
    protected override async Task OnInitializedAsync(){
       movies =  await Client.GetMoviesAsync();
+   }
+
+   private static string MovieUrl(int id){
+      return $"addeditMovies/{id}";
    }
 }

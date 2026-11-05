@@ -4,7 +4,7 @@ using MoviesBlazor.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
 
 //get the api base url variable i.e.(address) from env variable or appsettings.json file
@@ -12,6 +12,7 @@ string movieAPIURL = builder.Configuration["MoviesAPIURL"] ?? throw new Exceptio
 
 //DI the MoviesClient with right base addr  urin to app services
 builder.Services.AddHttpClient<MoviesClient>(client => client.BaseAddress = new Uri(movieAPIURL));
+builder.Services.AddHttpClient<GenresClient>(client => client.BaseAddress = new Uri(movieAPIURL));
 
 var app = builder.Build();
 
@@ -28,6 +29,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapRazorComponents<App>();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.Run();

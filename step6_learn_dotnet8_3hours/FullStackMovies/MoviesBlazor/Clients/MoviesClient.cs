@@ -11,4 +11,21 @@ public class MoviesClient(HttpClient httpClient)
 
         return movies;
     }
+
+    public async Task<MovieDto> GetMovieByIdAsync(int id)
+    {
+        MovieDto movie = await httpClient.GetFromJsonAsync<MovieDto>($"movies/{id}") ?? throw new Exception("Could not find movie");
+        return movie;
+    }
+
+    public async Task AddMovieAsync(CreateMovieDto movie)
+    {
+        await httpClient.PostAsJsonAsync("movies", movie);
+    }
+
+
+    public async Task UpdateMovieAsync(int id, UpdateMovieDto movie)
+    {
+        await httpClient.PutAsJsonAsync($"movies/{id}", movie);
+    }
 }

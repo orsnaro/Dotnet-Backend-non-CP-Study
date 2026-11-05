@@ -4,7 +4,7 @@ using MoviesAPI.Handlers;
 
 namespace MoviesAPI.Endpoints;
 
-public static class MoviesEndpoint
+public static class MoviesEndpoints
 {
     //Extension method
     //means extend the WebApplication type with those methods

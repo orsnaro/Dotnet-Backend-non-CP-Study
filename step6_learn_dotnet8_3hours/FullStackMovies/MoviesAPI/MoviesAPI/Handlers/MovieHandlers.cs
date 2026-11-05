@@ -49,13 +49,16 @@ public static class MovieHandlers
         //just before you get them from db project them to MovieDtos (only expose from db entity what we need!)
         //(projection produces new IQueryable<> type!)
         IQueryable<MovieDto>  movieDtosQuery =  moviesQuery
-                                                    .Select(movie => new MovieDto(
-                                                        movie.Name,
-                                                        movie.Price,
-                                                        movie.Genre != null ? movie.Genre.Name : null,
-                                                        movie.Director,
-                                                        movie.ReleaseDate
-                                                    ));
+                                                    .Select(movie => new MovieDto
+                                                    {
+                                                        Id = movie.Id,
+                                                        Name = movie.Name,
+                                                        Price = movie.Price,
+                                                        GenreName = movie.Genre != null ? movie.Genre.Name : null,
+                                                        GenreId = genreId,
+                                                        Director = movie.Director,
+                                                        ReleaseDate = movie.ReleaseDate
+                                                    });
 
         List<MovieDto> movies = [];
         try
